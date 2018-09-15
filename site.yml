@@ -1,0 +1,25 @@
+#Instance creation
+#
+- hosts: server
+  connection: local
+  roles:
+    - ec2_dbserver
+    - ec2_webserver
+
+- hosts: webserver
+  remote_user: ubuntu
+  become: yes
+  become_method: sudo
+  roles:
+    - tomcat
+    - springboot
+    
+- hosts: dbserver
+  remote_user: ubuntu
+  become: yes
+  become_method: sudo
+  roles:
+    - mongodb
+
+
+

@@ -1,0 +1,12 @@
+[server]
+localhost ansible_connection=local
+
+[dbserver]
+
+[dbserver:vars]
+ansible_ssh_private_key_file=./nanda_key.pem
+
+[webserver]
+
+[webserver:vars]
+ansible_ssh_private_key_file=./nanda_key.pem

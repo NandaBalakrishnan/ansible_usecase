@@ -1,0 +1,17 @@
+- name: Create Webserver instances
+  ec2:
+    region: "{{ ec2.region }}"
+    instance_tags: "{{ ec2.tags }}"
+    keypair: "{{ ec2.credentials }}"
+    image: "{{ ec2.image }}"
+    instance_type: "{{ ec2.instance_type }}"
+    instance_profile_name: "{{ ec2.role | default('') }}"
+    group: "{{ ec2.sg }}"
+    vpc_subnet_id: "{{ ec2.subnet }}"
+    assign_public_ip: "{{ ec2.public_ip | default('no') }}"
+    private_ip: "{{ ec2.private_ip | default('') }}"
+    wait: true
+  register: ec2
+- name: Add created public IP to webserver group
+  add_host: hostname={{ item.public_ip }} groups=webserver
+  loop: "{{ ec2.instances }}"
