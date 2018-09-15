@@ -25,7 +25,7 @@ ansible-playbook -i hosts -e pem_file=~/.ssh/your.pem -e key_name=your_keyname s
     * Start Mongodb Server
 
 ### Example Playbook
-Minimal playbook
+Minimal playbook for deploying spring boot application
 ```
      - hosts: all
        vars:
