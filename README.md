@@ -22,6 +22,14 @@
     * Import the public key used by the package management system
     * Add MongoDB Repository 
     * Install MongoDb Server
-    * Start Mongodb 
+    * Start Mongodb Server
 
+### Example Playbook
+Minimal playbook:
 
+     - hosts: all
+       vars:
+         springboot_application_name: spring-boot-sample
+         springboot_src: tests/spring-boot-sample.jar
+       roles:
+        - role: ansible-springboot
